@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+   
+
+    <div class="main-container">
+        
+        <div class="container">
+            <h1>BMI Calculator</h1>
+            <div class="input">
+                <label for="weight">Weight(Kg): </label>
+                <input type="number" name="weight" id="weight" class="inp" placeholder="Enter your weight">
+            </div>
+
+            
+            <div class="input">
+                <label for="Height">Height(cm): </label>
+                <input type="number" name="Height" id="Height" class="inp" placeholder="Enter your Height">
+            </div>
+
+            <div class="btn">
+                <button class="calc" id="calculate">Calculate</button>
+            </div>
+             
+            <div class="results" id="output">
+             <div class="content" >
+              <p>Your BMI is: <span id="bmi"></span></p>
+              <br>
+              <p id="bmi_level">Normal</p>
+             </div>
+             
+            </div>
+            <div class="img">
+                <img src="Imgs/Fitness tracker-rafiki.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var weig=0;
+        var heig=0;
+        document.getElementById("bmi_level").style.visibility="hidden";
+       document.getElementById("weight").addEventListener("input",function(e){
+           weig=e.target.value;
+           return weig;
+       })
+       document.getElementById("Height").addEventListener("input",function(e)
+       {
+           let h=e.target.value;
+           heig=h/100;
+           return heig;
+       })
+        document.getElementById("calculate").addEventListener("click",function(){
+            let h=heig*heig;
+            let H=heig^2;
+            let bmi=(weig/H);
+            if (bmi<18.5) {
+                document.getElementById("bmi_level").textContent="Under Weight";
+                document.getElementById("bmi_level").style.visibility="visible";
+            }
+            else if(bmi>=18.5&&bmi<25){
+                document.getElementById("bmi_level").textContent="Healthy";
+                document.getElementById("bmi_level").style.visibility="visible";
+            }
+            else if(bmi>=25&&bmi<30){
+                document.getElementById("bmi_level").textContent="Overweight";
+                document.getElementById("bmi_level").style.visibility="visible";
+            }
+            else{
+                document.getElementById("bmi_level").textContent="Obesity";
+                document.getElementById("bmi_level").style.visibility="visible";
+            }
+            document.getElementById("bmi").textContent=bmi.toFixed(2);
+        })
+
+
+    </script>
+</body>
+</html>
